@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlyHigh Casino - Home</title>
+</head>
+<body style="text-align:center; font-family:sans-serif;">
+    <h1>FlyHigh Casino</h1>
+    <p>Welcome! Experience the thrill — for study purposes only!</p>
+    <a href="games.html">
+        <button style="padding:10px 20px; font-size:16px;">Enter Casino</button>
+    </a>
+
+    <p style="margin-top:50px; font-size:12px; color:gray;">This is a fake website for educational use only.</p>
+</body>
+</html>
