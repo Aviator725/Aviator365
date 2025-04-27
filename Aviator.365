@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlyHigh Casino - Home</title>
+</head>
+<body style="text-align:center; font-family:sans-serif;">
+    <h1>FlyHigh Casino</h1>
+    <p>Welcome! Experience the thrill — for study purposes only!</p>
+    <a href="games.html">
+        <button style="padding:10px 20px; font-size:16px;">Enter Casino</button>
+    </a>
+
+    <p style="margin-top:50px; font-size:12px; color:gray;">This is a fake website for educational use only.</p>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlyHigh Casino - Games</title>
+</head>
+<body style="text-align:center; font-family:sans-serif;">
+    <h1>Choose Your Game</h1>
+
+    <div style="margin-top:30px;">
+        <a href="aviator.html">
+            <button style="padding:15px 30px; font-size:18px;">Play Aviator</button>
+        </a>
+    </div>
+
+    <div style="margin-top:50px;">
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <p style="margin-top:50px; font-size:12px; color:gray;">This is a fake website for educational use only.</p>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlyHigh Casino - Aviator</title>
+</head>
+<body style="text-align:center; font-family:sans-serif; background-color:#f0f8ff;">
+    <h1>Fake Aviator Game</h1>
+
+    <h3 id="balance">Balance: $1000</h3>
+
+    <canvas id="gameCanvas" width="600" height="400" style="border:2px solid black; margin-top:20px;"></canvas>
+
+    <div style="margin-top:20px;">
+        <button onclick="fakePlay()" style="padding:10px 20px; font-size:16px;">Play</button>
+        <button onclick="fakeCashOut()" style="padding:10px 20px; font-size:16px;">Cash Out</button>
+    </div>
+
+    <p id="status" style="font-size:18px; margin-top:20px;">Plane is ready for take-off!</p>
+
+    <div style="margin-top:30px;">
+        <a href="games.html">Back to Games</a>
+    </div>
+
+    <script>
+    let canvas = document.getElementById('gameCanvas');
+    let ctx = canvas.getContext('2d');
+
+    let planeX = 50;
+    let planeY = 200;
+    let speed = 2;
+    let playing = false;
+    let balance = 1000;
+    let multiplier = 1.0;
+
+    function drawPlane() {
+        if (playing) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the plane
+            ctx.fillStyle = "red";
+            ctx.fillRect(planeX, planeY, 50, 20);
+
+            planeX += speed;
+            planeY -= speed * 0.2;
+            multiplier += 0.01; // multiplier goes up slowly
+
+            document.getElementById('status').innerText = `Flying... Multiplier: x${multiplier.toFixed(2)}`;
+
+            if (planeX > canvas.width || planeY < 0) {
+                crash();
+            }
+
+            requestAnimationFrame(drawPlane);
+        }
+    }
+
+    function fakePlay() {
+        if (!playing) {
+            playing = true;
+            planeX = 50;
+            planeY = 200;
+            multiplier = 1.0;
+            drawPlane();
+        }
+    }
+
+    function fakeCashOut() {
+        if (playing) {
+            let winAmount = 10 * multiplier; // fake winning based on multiplier
+            balance += winAmount;
+            document.getElementById('balance').innerText = `Balance: $${balance.toFixed(2)}`;
+            document.getElementById('status').innerText = `You cashed out at x${multiplier.toFixed(2)}! Won $${winAmount.toFixed(2)}`;
+            playing = false;
+        }
+    }
+
+    function crash() {
+        playing = false;
+        balance -= 10; // lose fake $10 if crash
+        document.getElementById('balance').innerText = `Balance: $${balance.toFixed(2)}`;
+        document.getElementById('status').innerText = "Plane crashed! You lost $10.";
+    }
+    </script>
+
+    <p style="margin-top:50px; font-size:12px; color:gray;">This is a fake website for educational use only.</p>
+</body>
+</html>
